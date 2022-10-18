@@ -1,7 +1,7 @@
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
-const Cart = ({ shoppingCart }) => {
+const Cart = ({ shoppingCart, setShoppingCart, increaseAmount, decreaseAmount }) => {
     return (
         <div>
         {shoppingCart.map((product) => {
@@ -10,7 +10,11 @@ const Cart = ({ shoppingCart }) => {
             <img alt={product.name} src={product.picture} className='product--pic' id={product.id}/>
             <div>{product.productName}</div>
             <div>${product.price}</div>
-            <div>Qty. {product.qty}</div>
+            <div>
+                <div>Qty. {product.qty}</div>
+                <BsFillArrowLeftCircleFill onClick={()=> decreaseAmount(product.id)}/>
+                <BsFillArrowRightCircleFill onClick={()=> increaseAmount(product.id)}/>
+            </div>
             <div>Total ${product.qty*product.price}</div>
         </div>
         )

@@ -105,6 +105,18 @@ function App() {
     console.log(shoppingCart)
   }
 
+  const increaseAmount = (id) => {
+    const product = products.find((product) => product.id === id)
+    setShoppingCart(shoppingCart.map(item => item.id === product.id ? {...item, qty: item.qty + 1}  : item))
+
+  }
+
+  const decreaseAmount = (id) => {
+    const product = products.find((product) => product.id === id)
+    setShoppingCart(shoppingCart.map(item => item.id === product.id ? {...item, qty: item.qty - 1}  : item))
+
+  }
+
   return (
     <div className="App">
       <Router>
@@ -116,7 +128,7 @@ function App() {
           <Route path="/catalog/"
           element={<Catalog products={products} addtoCart={addtoCart} />}></Route>
           <Route path="/cart/"
-          element={<Cart shoppingCart={shoppingCart}/>}></Route>
+          element={<Cart shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount}/>}></Route>
         </Routes>
         <Footer />
       </Router>
