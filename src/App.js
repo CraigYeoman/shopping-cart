@@ -16,6 +16,7 @@ import tronxy from './pictures/tronxy.jpg'
 import mingda from './pictures/mingda.jpg'
 import phrozen from './pictures/phrozen.jpg'
 import uniqid from "uniqid";
+import { queryByTestId } from '@testing-library/react';
 
 function App() {
   
@@ -102,7 +103,6 @@ function App() {
     } else {
     const updatedCart = [...shoppingCart, product]
     setShoppingCart(updatedCart)}
-    console.log(shoppingCart)
   }
 
   const increaseAmount = (id) => {
@@ -112,9 +112,19 @@ function App() {
   }
 
   const decreaseAmount = (id) => {
-    const product = products.find((product) => product.id === id)
-    setShoppingCart(shoppingCart.map(item => item.id === product.id ? {...item, qty: item.qty - 1}  : item))
+    const productAmount = shoppingCart.find((product) => product.id === id)
+    if (productAmount.qty === 1){
+      return
+    } else {
+      const product = products.find((product) => product.id === id)
+      setShoppingCart(shoppingCart.map(item => item.id === product.id ? {...item, qty: item.qty - 1}  : item))
+    }
+    
+  }
 
+  const removeFromCart = (id) => {
+    const updatedCart = shoppingCart.filter((product) => product.id !== id)
+    setShoppingCart(updatedCart)
   }
 
   return (
@@ -128,7 +138,7 @@ function App() {
           <Route path="/catalog/"
           element={<Catalog products={products} addtoCart={addtoCart} />}></Route>
           <Route path="/cart/"
-          element={<Cart shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount}/>}></Route>
+          element={<Cart shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount} removeFromCart={removeFromCart} />}></Route>
         </Routes>
         <Footer />
       </Router>
