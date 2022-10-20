@@ -1,11 +1,11 @@
 import './App.css';
-import Nav from './components/Nav'
+import Header from './components/Header'
 import Home from './components/Home'
 import Catalog from './components/Catalog'
 import Cart from './components/Cart'
 import Footer from './components/Footer'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ender3 from './pictures/ender3.jpg'
 import weefun from './pictures/weefun.jpg'
 import elegoo from './pictures/elegoo.jpg'
@@ -15,12 +15,11 @@ import anycubic from './pictures/anycubic.jpg'
 import tronxy from './pictures/tronxy.jpg'
 import mingda from './pictures/mingda.jpg'
 import phrozen from './pictures/phrozen.jpg'
-import uniqid from "uniqid";
-import { queryByTestId } from '@testing-library/react';
 
 function App() {
   
   const [shoppingCart, setShoppingCart] = useState([])
+  const [shoppingCartQty, setShoppingCartQty] = useState(0)
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -127,10 +126,22 @@ function App() {
     setShoppingCart(updatedCart)
   }
 
+  useEffect(() => {
+    if(shoppingCart.length === 0) {
+      setShoppingCartQty('')
+    } else {
+    const updatedCartQty = shoppingCart.reduce((total, item) => {
+      return total + item.qty
+    }, 0)
+    setShoppingCartQty(updatedCartQty)
+    console.log(shoppingCartQty)
+    }
+  }, [shoppingCart, shoppingCartQty])
+
   return (
     <div className="App">
       <Router>
-        <Nav />
+        <Header shoppingCartQty={shoppingCartQty}/>
         <Routes>
           <Route path="/"
           element={<Home />}>

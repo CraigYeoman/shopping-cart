@@ -2,10 +2,10 @@
 
 const Catalog = ({ products, addtoCart }) => {
     return (
-    <div>
+    <div className="catalog--container">
     {products.map((product) => {
         return (
-        <div key={product.id} id={product.id} className='product'>
+        <div key={product.id} id={product.id} className='catalog--product'>
                 <img alt={product.name} src={product.picture} className='product--pic' id={product.id}/>
                 <div>{product.productName}</div>
                 <div>${product.price}</div>
