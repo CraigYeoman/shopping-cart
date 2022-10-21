@@ -20,6 +20,8 @@ function App() {
   
   const [shoppingCart, setShoppingCart] = useState([])
   const [shoppingCartQty, setShoppingCartQty] = useState(0)
+  const [total, setTotal] = useState(0)
+  const [shipping, setShipping] = useState(0)
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -134,9 +136,28 @@ function App() {
       return total + item.qty
     }, 0)
     setShoppingCartQty(updatedCartQty)
-    console.log(shoppingCartQty)
     }
   }, [shoppingCart, shoppingCartQty])
+
+  useEffect(() => {
+    if(shoppingCart.length === 0) {
+      setTotal(0)
+    } else {
+      const updatedTotal = shoppingCart.reduce((total, item) => {
+        return total + (item.qty * item.price)
+      }, 0)
+      setTotal(updatedTotal)
+      console.log(updatedTotal)
+    }
+  }, [shoppingCart, total])
+
+  useEffect(() => {
+    if(total > 1000) {
+      setShipping(0)
+    } else {
+      setShipping(shoppingCartQty*25)
+    }
+  }, [shoppingCartQty, total, shipping])
 
   return (
     <div className="App">
@@ -149,7 +170,7 @@ function App() {
           <Route path="/catalog/"
           element={<Catalog products={products} addtoCart={addtoCart} />}></Route>
           <Route path="/cart/"
-          element={<Cart shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount} removeFromCart={removeFromCart} />}></Route>
+          element={<Cart shipping={shipping} shoppingCartQty={shoppingCartQty} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount} removeFromCart={removeFromCart} total={total}/>}></Route>
         </Routes>
         <Footer />
       </Router>

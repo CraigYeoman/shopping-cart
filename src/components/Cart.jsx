@@ -1,10 +1,11 @@
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
-const Cart = ({ shoppingCart, removeFromCart, increaseAmount, decreaseAmount }) => {
+const Cart = ({ shoppingCart, removeFromCart, increaseAmount, decreaseAmount, total, shoppingCartQty, shipping }) => {
     return (
-        <div className='cart--container'>
-            <div className='shopping--cart'>Shopping Cart
+        <div className='cart--container'>Shopping Cart
+            <div className='shopping--cart'>
+            <div className='cart--items'>
         {shoppingCart.map((product) => {
         return(
         <div key={product.id} id={product.id} className='cart--product'>
@@ -23,6 +24,14 @@ const Cart = ({ shoppingCart, removeFromCart, increaseAmount, decreaseAmount }) 
         </div>
         )
         })}
+            </div>
+                <div className='cart--checkout'>
+                    <div className='cart--amounts'>Subtotal of {shoppingCartQty} items ${total}</div>
+                    <div className='cart--amounts'>Estimated shipping ${shipping}</div>
+                    <div className='cart--amounts'>Estimated Grand Total ${total + shipping}</div>
+                    <div className='cart--button'>Checkout</div>
+                </div>
+            
             </div>
         </div>
         )
