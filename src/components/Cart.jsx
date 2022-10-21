@@ -11,15 +11,15 @@ const Cart = ({ shoppingCart, removeFromCart, increaseAmount, decreaseAmount, to
         <div key={product.id} id={product.id} className='cart--product'>
             <img alt={product.name} src={product.picture} className='cart--img' id={product.id}/>
             <div className='cart--content'>
-                <div>{product.productName}</div>
-                <div>${product.price}</div>
+                <div className='cart--title'>{product.productName}</div>
+                <div>Unit Price ${product.price}</div>
                 <div>
                     <div>Qty. {product.qty}</div>
                     <BsFillArrowLeftCircleFill onClick={()=> decreaseAmount(product.id)}/>
                     <BsFillArrowRightCircleFill onClick={()=> increaseAmount(product.id)}/>
                 </div>
                 <div>Total ${product.qty*product.price}</div>
-                <button onClick={()=> removeFromCart(product.id)}>Remove from Cart</button>
+                <div className='cart--button' onClick={()=> removeFromCart(product.id)}>Remove from Cart</div>
             </div>
         </div>
         )
