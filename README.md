@@ -11,8 +11,11 @@ A react app where a user can add items to a shopping cart.
 
 ## Screen Shots
 
+### Home Page
 ![Homepage](/src/pictures/home.png?raw=true "Home Page")
 
+### Catalog
 ![Catalog](/src/pictures/catalog.png?raw=true "Catalog")
 
+### Shopping Cart
 ![ShoppingCart](/src/pictures/shoppingcart.png?raw=true "Shopping Cart")
