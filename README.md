@@ -9,10 +9,10 @@ A react app where a user can add items to a shopping cart.
 
 ## [Live Link](http://craigyeoman.github.io/shopping-cart)
 
-##Screen Shots
+## Screen Shots
 
-![Homepage](/src/pictures/background.png?raw=true "Home Page")
+![Homepage](/src/pictures/home.png?raw=true "Home Page")
 
-!Catalog](/src/pictures/catalog.png?raw=true "Catalog")
+![Catalog](/src/pictures/catalog.png?raw=true "Catalog")
 
 ![ShoppingCart](/src/pictures/shoppingcart.png?raw=true "Shopping Cart")
