@@ -7,11 +7,11 @@ const Catalog = ({ products, addtoCart }) => {
         return (
         <div key={product.id} id={product.id} className='catalog--product'>
                 <img alt={product.name} src={product.picture} className='product--pic' id={product.id}/>
-                <div>{product.productName}</div>
-                <div>${product.price}</div>
-                <div>Volume: {product.volume}</div>
+                <div className='product--name'>{product.productName}</div>
+                <div className='product--info'>${product.price}</div>
+                <div className='product--info'>Volume: {product.volume}</div>
                 <div>
-                    <button onClick={()=> addtoCart(product.id)}>Add to Cart</button>
+                    <button className="catalog--button" onClick={()=> addtoCart(product.id)}>Add to Cart</button>
                 </div>
         </div>)
 })}

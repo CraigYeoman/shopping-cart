@@ -73,11 +73,40 @@ a {
   margin: 15px auto 15px;
   background-color: #f4f5f5;
   border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.catalog--button {
+  background-color: var(--main);
+  border: none;
+  border-radius: 3px;
+  color: #f4f5f5;
+  padding: 5px;
+  font-weight: bold;
+  cursor:pointer;
+}
+
+.catalog--button:hover {
+  background-color: var(--main-2);
 }
 
 .catalog--product img{
   width: 350px;
   height: 350px;
+}
+
+.product--name {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-weight: bolder;
+  color: var(--main);
+}
+
+.product--info {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-weight: 300;
+
 }
 
 /* Cart */
