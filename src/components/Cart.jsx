@@ -1,7 +1,8 @@
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
+import ShippingBar from './ShippingBar'
 
-const Cart = ({ shoppingCart, removeFromCart, increaseAmount, decreaseAmount, total, shoppingCartQty, shipping }) => {
+const Cart = ({ percentage, style, freeShipping, shoppingCart, removeFromCart, increaseAmount, decreaseAmount, total, shoppingCartQty, shipping }) => {
     return (
         <div className='cart--container'>Shopping Cart
             <div className='shopping--cart'>
@@ -30,8 +31,10 @@ const Cart = ({ shoppingCart, removeFromCart, increaseAmount, decreaseAmount, to
                     <div className='cart--amounts'>Estimated shipping ${shipping}</div>
                     <div className='cart--amounts'>Estimated Grand Total ${total + shipping}</div>
                     <div className='cart--button'>Checkout</div>
+                    <div className='cart--info'>{freeShipping}</div>
+                    <ShippingBar percentage={percentage} style={style} />
                 </div>
-            
+                
             </div>
         </div>
         )

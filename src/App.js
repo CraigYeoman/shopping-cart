@@ -21,7 +21,10 @@ function App() {
   const [shoppingCart, setShoppingCart] = useState([])
   const [shoppingCartQty, setShoppingCartQty] = useState(0)
   const [total, setTotal] = useState(0)
+  const [freeShipping, setFreeShipping] = useState('')
   const [shipping, setShipping] = useState(0)
+  const [style, setStyle] = useState({})
+  const [percentage, setPercentage] = useState(0)
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -159,6 +162,30 @@ function App() {
     }
   }, [shoppingCartQty, total, shipping])
 
+  useEffect(() => {
+    if(total > 1000) {
+      setFreeShipping('Your order qualifies for free shipping.')
+  } else {
+    setFreeShipping('Shipping orders over $1000 can qualify for free shipping.')
+  }
+}, [total, freeShipping])
+
+  useEffect(() => {
+      if(total/1000 > 1) {
+        setPercentage(100)
+      } else {
+        setPercentage(Math.round((total/1000)*100))
+      }
+  }, [total, percentage, setPercentage])
+
+  setTimeout(() => {
+    const newStyle = {
+      opacity:1,
+      width: `${percentage}%`
+    }
+    setStyle(newStyle)
+  }, 500);
+
   return (
     <div className="App">
       <Router>
@@ -170,7 +197,7 @@ function App() {
           <Route path="/catalog/"
           element={<Catalog products={products} addtoCart={addtoCart} />}></Route>
           <Route path="/cart/"
-          element={<Cart shipping={shipping} shoppingCartQty={shoppingCartQty} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount} removeFromCart={removeFromCart} total={total}/>}></Route>
+          element={<Cart freeShipping={freeShipping} shipping={shipping} shoppingCartQty={shoppingCartQty} shoppingCart={shoppingCart} setShoppingCart={setShoppingCart} increaseAmount={increaseAmount} decreaseAmount={decreaseAmount} removeFromCart={removeFromCart} total={total} percentage={percentage} style={style}/>}></Route>
         </Routes>
         <Footer />
       </Router>

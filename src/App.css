@@ -133,6 +133,9 @@ a {
 .cart--checkout {
   padding-top: 15px;
   font-weight: lighter;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart--button {
@@ -143,6 +146,9 @@ a {
   padding: 5px;
   font-weight: bold;
   cursor:pointer;
+  width: 150px;
+  align-self: center;
+  margin-bottom: 15px;
 }
 
 .cart--button:hover {
@@ -181,6 +187,30 @@ a {
   height: 100px;
   align-self: center;
   padding-right: 15px;
+}
+
+.cart--info {
+  font-weight: lighter;
+  width: 260px;
+}
+
+/* ShippingBar */
+.shipping-bar {
+  background-color: var(--main);
+  border-radius: 20px;
+  height: 30px;
+  width: 260px;
+  margin-top: 10px;
+}
+
+.shipping-bar-progress {
+  background-color: #999;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s ease 0.3s;
 }
 
 /* Footer */
