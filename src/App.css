@@ -38,13 +38,11 @@ a {
 
 .header--link {
   color: var(--main-2);
+  display: flex;
+  gap: 7px;
 }
 
 /* Home */
-
-.home--container {
-
-}
 
 .home--heading {
   background-image: linear-gradient(to right, var(--main-2) , white);

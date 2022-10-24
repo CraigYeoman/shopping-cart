@@ -6,9 +6,7 @@ const Header = ({ shoppingCartQty }) => {
         <div className="header--container">
             <Link className="header--link" to="/">Home</Link>
             <Link className="header--link" to="/catalog">Catalog</Link>
-            <Link className="header--link" to="/cart">Shopping Cart</Link>       
-            <BsFillCartFill className="header--link"/>
-            <div className="header--link">{shoppingCartQty}</div>
+            <Link className="header--link" to="/cart">Shopping Cart <BsFillCartFill/> {shoppingCartQty}</Link>       
         </div>
     )
 }
