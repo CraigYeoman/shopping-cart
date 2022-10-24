@@ -196,7 +196,7 @@ function App() {
       <Router>
         <Header shoppingCartQty={shoppingCartQty}/>
         <Routes>
-          <Route path="/"
+          <Route path="/shopping-cart"
           element={<Home />}>
           </Route>
           <Route path="/catalog/"
