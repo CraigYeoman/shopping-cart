@@ -172,18 +172,23 @@ function App() {
 
   useEffect(() => {
       if(total/1000 > 1) {
-        setPercentage(100)
+        setPercentage('100%')
       } else {
-        setPercentage(Math.round((total/1000)*100))
+        setPercentage(`${Math.round((total/1000)*100)}%`)
       }
   }, [total, percentage, setPercentage])
 
   setTimeout(() => {
-    const newStyle = {
+    if(total === 0) {
+      setStyle({
+        opacity:0,
+        width: `${percentage}`
+      })
+    } else {
+      setStyle({
       opacity:1,
-      width: `${percentage}%`
-    }
-    setStyle(newStyle)
+      width: `${percentage}`
+      })}
   }, 500);
 
   return (

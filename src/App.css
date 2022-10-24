@@ -211,6 +211,12 @@ a {
   align-items: center;
   justify-content: center;
   transition: 1s ease 0.3s;
+  color:#f4f5f5;
+  text-align: center;
+}
+
+.shipping-bar-percentage {
+  text-align: center;
 }
 
 /* Footer */
